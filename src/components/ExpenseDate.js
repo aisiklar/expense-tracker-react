@@ -1,4 +1,4 @@
-import './ExpenseDate.css'; //to be copied from github
+import './ExpenseDate.css'; 
 
 
 function ExpenseDate(props) {

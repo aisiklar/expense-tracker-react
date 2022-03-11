@@ -1,26 +1,27 @@
-import ExpenseItems from './components/ExpenseItem';
+import ExpenseItem from './ExpenseItem';
+import './expenses.css';
 
 
 function Expenses(props) {
-
-
+ const propsExp = props.expenses;
     return (
-        <div>
-            <ExpenseItems
-                title={props[0].title}
-                amount={props[0].amount}
-                date={props[0].date}
-            ></ExpenseItems>
-            <ExpenseItems
-                title={props[1].title}
-                amount={props[1].amount}
-                date={props[1].date}
-             ></ExpenseItems>
-            <ExpenseItems
-                title={props[2].title}
-                amount={props[2].amount}
-                date={props[2].date}
-            ></ExpenseItems>
+        <div className='expenses'>
+            <ExpenseItem
+                title={propsExp[0].title}
+                amount={propsExp[0].amount}
+                date={propsExp[0].date}
+            ></ExpenseItem>
+            <ExpenseItem
+                title={propsExp[1].title}
+                amount={propsExp[1].amount}
+                date={propsExp[1].date}
+            ></ExpenseItem>
+            <ExpenseItem
+                title={propsExp[2].title}
+                amount={propsExp[2].amount}
+                date={propsExp[2].date}
+            ></ExpenseItem>
+            
         </div>
 
 
