@@ -1,9 +1,9 @@
+import React from 'react'; // aslında yeni nesil react app'de gerekmiyor
 import './App.css';
-//import './components/ExpenseItem';
-//import ExpenseItems from './components/ExpenseItem';
-import Expenses from './components/Expenses';
+import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/newExpense/NewExpense';
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: 'e1',
@@ -26,6 +26,7 @@ function App() {
   ]
   return (
     <div>
+      <NewExpense></NewExpense>
      <Expenses expenses={expenses}></Expenses>
     </div>
   );
