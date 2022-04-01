@@ -80,6 +80,7 @@ const ExpenseForm = (props) => {
     }
 
     const submitHandler = (event) => {
+        // normalde, form submit ettiğimizde, sayfa refresh olur. Bunu engellemek için aşağıdaki metodu kullan.
         event.preventDefault();
         // multiple state yaklaşımında bu tip bir object gerekiyor. 
         //Diğer yaklaşımda object daha önceden tanımlanmış oluyor

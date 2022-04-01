@@ -1,4 +1,4 @@
-import React from 'react'; // aslında yeni nesil react app'de gerekmiyor
+import React, { useState } from 'react'; // aslında yeni nesil react app'de gerekmiyor
 import ExpenseItem from './ExpenseItem';
 import './expenses.css';
 import Card from'../UI/Card';
@@ -6,30 +6,27 @@ import ExpenseFilter from './ExpenseFilter';
 
 const Expenses = (props) => {
  const propsExp = props.expenses;
+ const [selectedYear, setSelectedYear] = useState('2022');
+ console.log(`selected Year State: ${selectedYear}`);
+
  const filterHandler = (selectedFilterYear)=>{
     console.log('in Expenses, filter year selected:')
     console.log(selectedFilterYear);
+    setSelectedYear(selectedFilterYear);
  }
     return (
         <div>
-            <ExpenseFilter filterHandler={filterHandler}></ExpenseFilter>
+           
             <Card className='expenses'>
-                <ExpenseItem
-                    title={propsExp[0].title}
-                    amount={propsExp[0].amount}
-                    date={propsExp[0].date}
-                ></ExpenseItem>
-                <ExpenseItem
-                    title={propsExp[1].title}
-                    amount={propsExp[1].amount}
-                    date={propsExp[1].date}
-                ></ExpenseItem>
-                <ExpenseItem
-                    title={propsExp[2].title}
-                    amount={propsExp[2].amount}
-                    date={propsExp[2].date}
-                ></ExpenseItem>
-                
+                <ExpenseFilter selectedFilter={selectedYear} onChangeFilter={filterHandler}></ExpenseFilter>
+                {props.expenses.map(expense => (
+                    <ExpenseItem
+                    key={expense.id}
+                    title={expense.title}
+                    amount={expense.amount}
+                    date={expense.date}
+                    />
+                ))} 
             </Card>
         </div>
     )
