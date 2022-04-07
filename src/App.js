@@ -32,11 +32,9 @@ const App = () => {
     console.log(expense);
     id++;
     expense.id = id.toString();
-    
     setExpenses(prevState => {
       console.log(prevState)
       console.log(prevState);
-      
       if (prevState[0].id == '0'){
         return [expense];    
       } else {
