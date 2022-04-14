@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; // aslında yeni nesil react app'de gerekmiyor
-import ExpenseItem from './ExpenseItem';
+import ExpensesList from './ExpensesList';
+//import ExpenseItem from './ExpenseItem';
 import './expenses.css';
 import Card from'../UI/Card';
 import ExpenseFilter from './ExpenseFilter';
@@ -44,7 +45,20 @@ const Expenses = (props) => {
         console.log(props.expenses);
     } */
  }
-        if (selectedYear == "all-years") {
+    
+    let filteredExpenses = [...props.expenses];
+    console.log('filteredExpenses (=[...props.expenses]): ');
+    console.log(filteredExpenses);
+    if (selectedYear != "all-years") {
+        filteredExpenses = props.expenses.filter(expenses => expenses.date.getFullYear().toString() === selectedYear);
+        console.log('filteredExpenses: ');
+        console.log(filteredExpenses);
+    
+    }
+    
+
+        // bu aşağıdaki logic'i, ExpensesList comp.'a taşıdım
+       /*  if (selectedYear == "all-years") {
             console.log('selectedYear == "all-year" true, so returning all the expenses...')
             return (
                 <div>
@@ -65,7 +79,10 @@ const Expenses = (props) => {
         } else {
             console.log(`selectedYear == "all-year" false, it is ${selectedYear}, so returning filtered expenses...`)
             
-            let expensesContent =  <p>no expenses found</p>;
+ */
+
+           /*      
+           let expensesContent =  <p>no expenses found</p>;
             if (props.expenses.filter(expenses => expenses.date.getFullYear().toString() === selectedYear).length > 0) {
                 expensesContent = props.expenses.filter(expenses => expenses.date.getFullYear().toString() === selectedYear).map(expense => (
                         <ExpenseItem
@@ -74,13 +91,19 @@ const Expenses = (props) => {
                         amount={expense.amount}
                         date={expense.date}
                         />
-                    ))}
+                    ))} */
 
             return (
                 <div>
                     <Card className='expenses'>
                         <ExpenseFilter selectedFilter={selectedYear} onChangeFilter={filterHandler}></ExpenseFilter>
-                        {expensesContent}
+                        <ExpensesList
+                            selectedYear={selectedYear}
+                            item={filteredExpenses}
+                        ></ExpensesList>
+
+                        {/* // daha yalın bir code için yeni component eklendi ExpensesList
+                        {expensesContent} */}
                         {/* yukarıdaki ifade en yalın ifade...  Alternatifleri aşağıda: */}
 
                         {/* burada bir trick yaptık.. normalte ternary operator ile yapılabilecek bir conditional rendering && operatoru
@@ -116,6 +139,6 @@ const Expenses = (props) => {
         }
         
     
-}
+
 
 export default Expenses;
