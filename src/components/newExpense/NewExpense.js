@@ -17,20 +17,27 @@ const NewExpense = (props) => {
     const [showAddNewExpenseButton, setShowAddNewExpenseButton] = useState('true');
     console.log(`showAddNewExpenseButton and typeof(): ${showAddNewExpenseButton}, ${typeof(showAddNewExpenseButton)}`);
 
-    const AddNewExpenseButtonClick = (buttonState) => {
-        console.log(`buttonState: ${buttonState}`);
+    const AddNewExpenseButtonClicked = (buttonState) => {
+        console.log(`buttonState in the AddNewExpenseButtonClicked func.: ${buttonState}`);
         setShowAddNewExpenseButton(buttonState);
     }
 
+    const cancelNewExpenseButton = (buttonState) => {
+        console.log(`buttonState in the AddNewExpenseButtonClicked func.: ${buttonState}`);
+        setShowAddNewExpenseButton(buttonState);
+    }
     if (showAddNewExpenseButton === 'true') {
         return (
-            <AddNewExpenseButton onClickOfAddNewExpenseButton={AddNewExpenseButtonClick}></AddNewExpenseButton>
+            <AddNewExpenseButton 
+                onClickOfAddNewExpenseButton={AddNewExpenseButtonClicked}
+            ></AddNewExpenseButton>
         )
     } else {
         return <div className="new-expense">
-        <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}>
-
-        </ExpenseForm>
+        <ExpenseForm 
+            onSaveExpenseData={saveExpenseDataHandler}
+            onClickOfCancelNewExpenseButton ={cancelNewExpenseButton}
+        ></ExpenseForm>
     </div>
     }
 
