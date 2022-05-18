@@ -12,7 +12,7 @@ const Expenses = (props) => {
 */
   const [selectedYear, setSelectedYear] = useState("all-years");
   // props to print to the screen. After/before selecting the filter
-  const [expensesFiltered, setExpensesFiltered] = useState(props.expenses);
+  //const [expensesFiltered, setExpensesFiltered] = useState(props.expenses);
   /* console.log(`selected Year State: ${selectedYear}`);
     console.log('expenseToPrint at reload, all-years case:');
     console.log(expenseToPrint); 
@@ -49,6 +49,7 @@ const Expenses = (props) => {
     console.log(
       'selectedYear == "all-year" true, so returning all the expenses...'
     );
+    console.log(`sending `)
     return (
       <div>
         <Card className="expenses">
@@ -56,6 +57,7 @@ const Expenses = (props) => {
             selectedFilter={selectedYear}
             onChangeFilter={filterHandler}
           ></ExpenseFilter>
+          <ExpensesChart expenses={props.expenses}></ExpensesChart>
           {props.expenses.map((expense) => (
             <ExpenseItem
               key={expense.id}
@@ -67,7 +69,7 @@ const Expenses = (props) => {
             </Card>
       </div>
     );
-  } else {
+  } else { //if selectedYear != "all-year"
     console.log(
       `selectedYear == "all-year" false, it is ${selectedYear}, so returning filtered expenses...`
     );
@@ -99,6 +101,7 @@ const Expenses = (props) => {
             selectedFilter={selectedYear}
             onChangeFilter={filterHandler}
           ></ExpenseFilter>
+          <ExpensesChart expenses={expensesContent}></ExpensesChart>
           {expensesContent}
           {/* yukarıdaki ifade en yalın ifade...  Alternatifleri aşağıda: */}
 
