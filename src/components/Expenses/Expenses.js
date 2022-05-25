@@ -28,8 +28,8 @@ const Expenses = (props) => {
     console.log("in Expenses, filter year selected:");
     console.log(selectedFilterYear);
     setSelectedYear(selectedFilterYear);
-    //console.log('props.expenses in Expense.js:');
-    //console.log(props.expenses);
+    console.log('props.expenses in Expense.js:');
+    console.log(props.expenses);
     //console.log('props.expenses[0].date.getFullYear()');
     //console.log(props.expenses[0].date.getFullYear());
     /* if (selectedFilterYear != "all-years") {
@@ -70,10 +70,7 @@ const Expenses = (props) => {
       </div>
     );
   } else { //if selectedYear != "all-year"
-    console.log(
-      `selectedYear == "all-year" false, it is ${selectedYear}, so returning filtered expenses...`
-    );
-
+    console.log(`selectedYear == "all-year" false, it is ${selectedYear}, so returning filtered expenses...`);
     let expensesContent = <p>no expenses found</p>;
     if (
       props.expenses.filter(
@@ -101,7 +98,8 @@ const Expenses = (props) => {
             selectedFilter={selectedYear}
             onChangeFilter={filterHandler}
           ></ExpenseFilter>
-          <ExpensesChart expenses={expensesContent}></ExpensesChart>
+          
+         {<ExpensesChart expenses={props.expenses.filter(expenses => expenses.date.getFullYear().toString() === selectedYear)}></ExpensesChart> }
           {expensesContent}
           {/* yukarıdaki ifade en yalın ifade...  Alternatifleri aşağıda: */}
 

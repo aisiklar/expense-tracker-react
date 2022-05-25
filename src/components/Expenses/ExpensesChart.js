@@ -22,10 +22,12 @@ const ExpenseChart = (props) => {
         console.log(`expense.date.getMonth() of props.expenses is ${expense.date.getMonth()}`);
         const expenseMonth = expense.date.getMonth();
         console.log(`expenseMonth = ${expenseMonth}`);
+        console.log(`type of expenseMonth = ${typeof(expenseMonth)}`);
         console.log(`chartDataPoints[expenseMonth].value = ${chartDataPoints[expenseMonth].value}`);
-        chartDataPoints[expenseMonth].value += expense.amount;
+        console.log(`typeof expense.amount = ${typeof(expense.amount)}`);
+        chartDataPoints[expenseMonth].value += parseInt(expense.amount, 10);
         console.log(` after adding; chartDataPoints[expenseMonth].value = ${chartDataPoints[expenseMonth].value}`);
-
+        console.log(`typeof chartDataPoints[expenseMonth].value: ${typeof(chartDataPoints[expenseMonth].value)}`);
     }
 
 
